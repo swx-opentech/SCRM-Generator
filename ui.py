@@ -73,19 +73,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.DownFile.setEnabled(True)
         self.SavePro.setEnabled(True)
 
-        # 重要：检查列表里面文件是否都存在？？？
+        # 重要：检查列表里面文件是否都真实地存在？？？
         missing_file_lst = []
         for code_file in self.on_edit_codes_list:
             if not File_Manager.File_Exist(code_file): # 文件不存在
                 missing_file_lst.append(code_file)
                 
         if missing_file_lst:
-            # 显示警告（只显示一次）
             file_names = "\n".join([os.path.basename(f) for f in missing_file_lst[:5]])
             if len(missing_file_lst) > 5:
                 file_names += f"\n...等 {len(missing_file_lst)} 个文件"
             
-            QMessageBox.warning(self, "警告信息", f"无法找到{code_file}，将自动移除！", QMessageBox.Yes)
+            QMessageBox.warning(self,  "警告信息",  f"发现 {len(missing_file_lst)} 个文件不存在，将自动移除！\n\n{file_names}", QMessageBox.Yes)
 
             self.on_edit_codes_list = [f for f in self.on_edit_codes_list if f not in missing_file_lst]
             self.on_edit_project_data["source_code_paths"] = self.on_edit_codes_list
@@ -148,7 +147,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.on_edit_codes_list.append(file_path)
             self.Update_CodeBoxUI(focus = self.CodeFiles.count()) # 是先添加，再ui
             print(f"[MainWindow] 添加代码文件：用户添加了文件！路径为: {file_path}, 现在有{self.on_edit_project_data.get("source_code_paths")}")
-            
+
     def Delete_CodeFile(self):
         select_index = self.CodeFiles.currentRow()
         
@@ -225,6 +224,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def Save(self):
         if not self.on_edit_project_path or not self.on_edit_project_data:
             QMessageBox.warning(None, "警告信息", "没有正在编辑的工程！")
+            return
         success_flag, msg = Project_Manager.Modify_Project(self.on_edit_project_path, self.on_edit_project_data)
         if not success_flag:
             QMessageBox.critical(None, "错误信息", f"保存失败:{msg}")
@@ -238,6 +238,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             QMessageBox.warning(self, "警告信息", "工程没有保存，请保存后再生成文件！", QMessageBox.Yes)
             return
         
+        if not self.on_edit_codes_list: # 啥都没有
+            QMessageBox.warning(self, "警告信息", "没有代码文件可以生成！", QMessageBox.Yes)
+            return
+        
         self.ProgressBar.setValue(0)
         total_cnt = len(self.on_edit_codes_list)
 
@@ -246,6 +250,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         DocumentWriter.current_codeblock = 0
         DocumentWriter.software_name = self.on_edit_project_data.get('software_name')
         DocumentWriter.software_version = self.on_edit_project_data.get('software_version')
+
+        # 增加功能：检查模板文件
+        if not File_Manager.File_Exist("source-code_model.docx"): # 使用的是相对路径
+            QMessageBox.critical(self, "错误", f"找不到模板docx文件！请将模板文件放置在和程序相同的目录下", QMessageBox.Yes)
+            return
 
         export_dir = os.path.dirname(self.on_edit_project_path)
         export_filename = f"{export_dir}/{DocumentWriter.software_name}{DocumentWriter.software_version} - 源代码.docx"
@@ -268,7 +277,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         msg_box.exec_()
 
         if msg_box.clickedButton() == btn_view_file:
-            print(111)
             File_Manager.open_file(export_filename)
         elif msg_box.clickedButton() == btn_view_dir:
             File_Manager.open_directory(export_dir)

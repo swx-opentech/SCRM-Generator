@@ -107,7 +107,7 @@ class DocumentWriter:
 
 
     @classmethod
-    def Generate_One(cls, doc: DocumentObject, code_path: list) -> tuple[bool|str]:
+    def Generate_One(cls, doc: DocumentObject, code_path: list) -> tuple[bool, str]:
         code_name = File_Manager.Get_FileName(code_path)
         
         if code_name == None:
