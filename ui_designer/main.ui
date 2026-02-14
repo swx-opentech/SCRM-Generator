@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>783</width>
-    <height>511</height>
+    <height>505</height>
    </rect>
   </property>
   <property name="font">
@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>SCRM Generator - 计算机软件著作权程序鉴别材料生成器</string>
+   <string>SCRM Generator - 计算机软件著作权程序鉴别材料生成器 V4.5.3</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">

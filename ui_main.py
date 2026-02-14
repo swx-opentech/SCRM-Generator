@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(783, 511)
+        MainWindow.resize(783, 505)
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         MainWindow.setFont(font)
@@ -206,7 +206,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "SCRM Generator - 计算机软件著作权程序鉴别材料生成器"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "SCRM Generator - 计算机软件著作权程序鉴别材料生成器 V4.5.3"))
         self.groupBox.setTitle(_translate("MainWindow", "著作权基本信息"))
         self.label.setText(_translate("MainWindow", "软件名称："))
         self.label_2.setText(_translate("MainWindow", "软件版本："))
