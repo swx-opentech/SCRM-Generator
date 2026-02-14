@@ -87,7 +87,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             
             QMessageBox.warning(self, "警告信息", f"无法找到{code_file}，将自动移除！", QMessageBox.Yes)
 
-        self.on_edit_codes_list = [f for f in self.on_edit_codes_list if f not in missing_file_lst]
+            self.on_edit_codes_list = [f for f in self.on_edit_codes_list if f not in missing_file_lst]
+            self.on_edit_project_data["source_code_paths"] = self.on_edit_codes_list
+            self.on_edit_status = True
+
         self.Update_CodeBoxUI(0)
 
         self.NewBtn.setEnabled(False)
