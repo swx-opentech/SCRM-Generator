@@ -294,6 +294,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.INFO(msg)
             self.ProgressBar.setValue(int((cnt + 1)/ total_cnt * 100))
         DocumentWriter.Save(doc, export_filename)
+        self.INFO(f"文件保存成功，路径：{export_filename}")
         
         # 处理提示框
         msg_box = QMessageBox(QMessageBox.Information, "提示信息", f"导出成功，导出目录为：\n{export_dir}", parent=self)
