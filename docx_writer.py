@@ -107,20 +107,21 @@ class DocumentWriter:
 
 
     @classmethod
-    def Generate_One(cls, doc: DocumentObject, code_path: list) -> None:
+    def Generate_One(cls, doc: DocumentObject, code_path: list) -> tuple[bool|str]:
         code_name = File_Manager.Get_FileName(code_path)
         
         if code_name == None:
             print("[ERROR] Cannot detect Code Name, please use absolute path instead of relative path")
-            return None
+            return False, "文件名获取失败"
         
         code_text = File_Manager.Read_File(code_path)
         if code_text == None: 
             print("[Waring] No text in this file")
-            return None
+            return False, "文件内容读取失败，或空文件！"
 
         DocumentWriter.Add_CodeBlock(doc, code_text, code_name)
         print(f"[INFO] Add Code Block {cls.current_codeblock}/{cls.total_codeblock}")
+        return True, f"添加成功{cls.current_codeblock}/{cls.total_codeblock}"
 
     
 
