@@ -22,14 +22,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.NewBtn.clicked.connect(self.New_Project)
+        self.NewBtn_Menu.triggered.connect(self.New_Project)
         self.LoadBtn.clicked.connect(self.Open_Project)
+        self.LoadBtn_Menu.triggered.connect(self.Open_Project)
         self.SavePro.clicked.connect(self.Save)
+        self.SavePro_Menu.triggered.connect(self.Save)
         self.SoftwareName.textChanged.connect(self.Update_SoftwareName)
         self.SoftwareVersion.textChanged.connect(self.Update_SoftwareVersion)
         self.ClosePro.clicked.connect(self.CloseProject)
+        self.ClosePro_Menu.triggered.connect(self.CloseProject)
 
         self.AddFile.clicked.connect(self.Add_CodeFile)
+        self.AddFile_Menu.triggered.connect(self.Add_CodeFile)
         self.DeleteFile.clicked.connect(self.Delete_CodeFile)
+        self.DeleteFile_Menu.triggered.connect(self.Delete_CodeFile)
         self.UpFile.clicked.connect(self.Up_CodeFile)
         self.DownFile.clicked.connect(self.Down_CodeFile)
 
@@ -68,10 +74,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # 启用代码文件编辑按钮
         self.AddFile.setEnabled(True)
+        self.AddFile_Menu.setEnabled(True)
         self.DeleteFile.setEnabled(True)
+        self.DeleteFile_Menu.setEnabled(True)
         self.UpFile.setEnabled(True)
         self.DownFile.setEnabled(True)
         self.SavePro.setEnabled(True)
+        self.SavePro_Menu.setEnabled(True)
 
         # 重要：检查列表里面文件是否都真实地存在？？？
         missing_file_lst = []
@@ -93,8 +102,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Update_CodeBoxUI(0)
 
         self.NewBtn.setEnabled(False)
+        self.NewBtn_Menu.setEnabled(False)
         self.LoadBtn.setEnabled(False)
+        self.LoadBtn_Menu.setEnabled(False)
         self.ClosePro.setEnabled(True)
+        self.ClosePro_Menu.setEnabled(True)
         self.GenerateBtn.setEnabled(True)
         self.INFO(f"加载工程成功！{project_path}")
 
@@ -116,10 +128,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # 禁用代码文件编辑按钮
         self.AddFile.setEnabled(False)
+        self.AddFile_Menu.setEnabled(False)
         self.DeleteFile.setEnabled(False)
+        self.DeleteFile_Menu.setEnabled(False)
         self.UpFile.setEnabled(False)
         self.DownFile.setEnabled(False)
         self.SavePro.setEnabled(False)
+        self.SavePro_Menu.setEnabled(False)
 
         # 类变量成员全部清空
         self.on_edit_status = False
@@ -130,23 +145,32 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.CodeFiles.clear()
 
         self.NewBtn.setEnabled(True)
+        self.NewBtn_Menu.setEnabled(True)
         self.LoadBtn.setEnabled(True)
+        self.LoadBtn_Menu.setEnabled(True)
         self.ClosePro.setEnabled(False)
+        self.ClosePro_Menu.setEnabled(False)
         self.GenerateBtn.setEnabled(False)
 
         self.INFO("关闭工程成功！")
 
 
     def Add_CodeFile(self):
-        file_path, _ = QFileDialog.getOpenFileName(self, "选择代码文件", ".")
-        if file_path:
-            if file_path in self.on_edit_codes_list:
-                QMessageBox.warning(None, "警告信息", "选择的文件已有！")
-                return
-            self.on_edit_status = True
-            self.on_edit_codes_list.append(file_path)
-            self.Update_CodeBoxUI(focus = self.CodeFiles.count()) # 是先添加，再ui
-            print(f"[MainWindow] 添加代码文件：用户添加了文件！路径为: {file_path}, 现在有{self.on_edit_project_data.get("source_code_paths")}")
+        file_paths, _ = QFileDialog.getOpenFileNames(self, "选择代码文件", ".")
+        
+        if file_paths:
+            added_files = []
+            for file_path in file_paths:
+                if file_path in self.on_edit_codes_list:
+                    QMessageBox.warning(None, "警告信息", f"文件 {file_path} 已存在！")
+                    continue
+                self.on_edit_status = True
+                self.on_edit_codes_list.append(file_path)
+                added_files.append(file_path)
+            
+            self.Update_CodeBoxUI(focus=self.CodeFiles.count())
+            self.INFO(f"成功添加了{len(added_files)}个文件")
+            print(f"[MainWindow] 添加代码文件：用户添加了文件！路径为: {added_files}, 现在有{self.on_edit_project_data.get('source_code_paths')}")
 
     def Delete_CodeFile(self):
         select_index = self.CodeFiles.currentRow()
@@ -263,7 +287,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for cnt, file_path in enumerate(self.on_edit_codes_list):
             success_flag, msg = DocumentWriter.Generate_One(doc, file_path)
             if not success_flag:
-                QMessageBox.warning(self, "警告信息", f"文件{file_path}生成错误：{msg}", QMessageBox.Yes)
+                QMessageBox.warning(self, "警告信息", f"文件{file_path}生成错误：{msg}，文件生成失败！", QMessageBox.Yes)
+                self.INFO("生成时发生了错误，生成失败！")
+                self.ProgressBar.setValue(0)
+                return
             self.INFO(msg)
             self.ProgressBar.setValue(int((cnt + 1)/ total_cnt * 100))
         DocumentWriter.Save(doc, export_filename)

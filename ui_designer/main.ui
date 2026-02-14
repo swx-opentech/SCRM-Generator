@@ -439,19 +439,29 @@
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
+   <widget class="QMenu" name="FileMenu">
     <property name="title">
      <string>文件</string>
     </property>
-    <addaction name="NewProject"/>
-    <addaction name="Load"/>
-    <addaction name="SaveFile"/>
+    <addaction name="SavePro_Menu"/>
+    <addaction name="separator"/>
+    <addaction name="AddFile_Menu"/>
+    <addaction name="DeleteFile_Menu"/>
    </widget>
-   <addaction name="menu"/>
+   <widget class="QMenu" name="ProjectMenu">
+    <property name="title">
+     <string>工程</string>
+    </property>
+    <addaction name="LoadBtn_Menu"/>
+    <addaction name="NewBtn_Menu"/>
+    <addaction name="ClosePro_Menu"/>
+   </widget>
+   <addaction name="FileMenu"/>
+   <addaction name="ProjectMenu"/>
   </widget>
   <action name="NewProject">
    <property name="text">
-    <string>新建</string>
+    <string>新建工程</string>
    </property>
    <property name="font">
     <font>
@@ -473,6 +483,48 @@
   <action name="Load">
    <property name="text">
     <string>加载工程</string>
+   </property>
+  </action>
+  <action name="SavePro_Menu">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>保存</string>
+   </property>
+  </action>
+  <action name="AddFile_Menu">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>添加代码</string>
+   </property>
+  </action>
+  <action name="DeleteFile_Menu">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>删除代码</string>
+   </property>
+  </action>
+  <action name="LoadBtn_Menu">
+   <property name="text">
+    <string>加载工程</string>
+   </property>
+  </action>
+  <action name="NewBtn_Menu">
+   <property name="text">
+    <string>新建工程</string>
+   </property>
+  </action>
+  <action name="ClosePro_Menu">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>关闭工程</string>
    </property>
   </action>
  </widget>
