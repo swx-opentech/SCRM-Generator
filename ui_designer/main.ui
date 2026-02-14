@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>787</width>
-    <height>481</height>
+    <width>783</width>
+    <height>511</height>
    </rect>
   </property>
   <property name="font">
@@ -25,7 +25,7 @@
       <x>10</x>
       <y>10</y>
       <width>661</width>
-      <height>61</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
@@ -58,7 +58,7 @@
       <rect>
        <x>80</x>
        <y>30</y>
-       <width>241</width>
+       <width>561</width>
        <height>20</height>
       </rect>
      </property>
@@ -69,8 +69,8 @@
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>350</x>
-       <y>30</y>
+       <x>20</x>
+       <y>60</y>
        <width>60</width>
        <height>16</height>
       </rect>
@@ -85,9 +85,9 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>410</x>
-       <y>30</y>
-       <width>241</width>
+       <x>80</x>
+       <y>60</y>
+       <width>561</width>
        <height>20</height>
       </rect>
      </property>
@@ -100,9 +100,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
-      <width>511</width>
-      <height>351</height>
+      <y>110</y>
+      <width>601</width>
+      <height>311</height>
      </rect>
     </property>
     <property name="font">
@@ -114,14 +114,19 @@
     <property name="title">
      <string>源代码文件信息</string>
     </property>
-    <widget class="QListView" name="CodeFiles">
+    <widget class="QListWidget" name="CodeFiles">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>391</width>
-       <height>321</height>
+       <width>481</width>
+       <height>281</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
      </property>
     </widget>
     <widget class="QPushButton" name="AddFile">
@@ -130,8 +135,8 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>40</y>
+       <x>510</x>
+       <y>30</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -146,8 +151,8 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>100</y>
+       <x>510</x>
+       <y>90</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -162,8 +167,8 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>160</y>
+       <x>510</x>
+       <y>150</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -178,8 +183,8 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>220</y>
+       <x>510</x>
+       <y>210</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -194,11 +199,80 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>280</y>
+       <x>510</x>
+       <y>270</y>
        <width>75</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+      </font>
      </property>
      <property name="text">
       <string>保存修改</string>
@@ -208,10 +282,10 @@
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>80</y>
-      <width>241</width>
-      <height>351</height>
+      <x>630</x>
+      <y>110</y>
+      <width>141</width>
+      <height>311</height>
      </rect>
     </property>
     <property name="font">
@@ -223,28 +297,15 @@
     <property name="title">
      <string>一键生成</string>
     </property>
-    <widget class="QProgressBar" name="progressBar">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>231</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="value">
-      <number>0</number>
-     </property>
-    </widget>
     <widget class="QPushButton" name="GenerateBtn">
      <property name="enabled">
       <bool>false</bool>
      </property>
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>70</y>
-       <width>141</width>
+       <x>10</x>
+       <y>130</y>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -285,18 +346,13 @@
        </disabled>
       </palette>
      </property>
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+      </font>
+     </property>
      <property name="text">
       <string>生成程序鉴别材料</string>
-     </property>
-    </widget>
-    <widget class="QUndoView" name="undoView">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>130</y>
-       <width>221</width>
-       <height>211</height>
-      </rect>
      </property>
     </widget>
    </widget>
@@ -326,13 +382,60 @@
      <string>新建工程</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="ClosePro">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>80</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>关闭工程</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="ProgressBar">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>430</y>
+      <width>761</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Status">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>460</y>
+      <width>761</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>状态信息：</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>787</width>
+     <width>783</width>
      <height>22</height>
     </rect>
    </property>
@@ -346,7 +449,6 @@
    </widget>
    <addaction name="menu"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="NewProject">
    <property name="text">
     <string>新建</string>
@@ -374,6 +476,20 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>LoadBtn</tabstop>
+  <tabstop>NewBtn</tabstop>
+  <tabstop>ClosePro</tabstop>
+  <tabstop>CodeFiles</tabstop>
+  <tabstop>AddFile</tabstop>
+  <tabstop>DeleteFile</tabstop>
+  <tabstop>UpFile</tabstop>
+  <tabstop>DownFile</tabstop>
+  <tabstop>SavePro</tabstop>
+  <tabstop>GenerateBtn</tabstop>
+  <tabstop>SoftwareName</tabstop>
+  <tabstop>SoftwareVersion</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>452</width>
-    <height>177</height>
+    <height>226</height>
    </rect>
   </property>
   <property name="font">
@@ -22,33 +22,33 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
-     <width>71</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>程 序 名 称：</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
      <y>60</y>
      <width>71</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>程序版本号：</string>
+    <string>软 件 名 称：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>软件版本号：</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="SoftwareName">
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>20</y>
+     <y>60</y>
      <width>331</width>
      <height>20</height>
     </rect>
@@ -58,17 +58,17 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>60</y>
+     <y>100</y>
      <width>331</width>
      <height>20</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="OKNew">
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>140</y>
+     <y>180</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -77,11 +77,11 @@
     <string>新建</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="Cancel">
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>140</y>
+     <y>180</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -94,7 +94,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>100</y>
+     <y>140</y>
      <width>71</width>
      <height>21</height>
     </rect>
@@ -107,7 +107,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>100</y>
+     <y>140</y>
      <width>301</width>
      <height>20</height>
     </rect>
@@ -117,7 +117,7 @@
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>100</y>
+     <y>140</y>
      <width>21</width>
      <height>21</height>
     </rect>
@@ -126,7 +126,39 @@
     <string>...</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>工 程 名 称：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ProjectName">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>20</y>
+     <width>331</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
+ <tabstops>
+  <tabstop>ProjectName</tabstop>
+  <tabstop>SoftwareName</tabstop>
+  <tabstop>SoftwareVersion</tabstop>
+  <tabstop>ChoosePath</tabstop>
+  <tabstop>OKNew</tabstop>
+  <tabstop>Cancel</tabstop>
+  <tabstop>ProjectPath</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
