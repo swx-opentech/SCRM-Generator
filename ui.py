@@ -156,7 +156,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def Add_CodeFile(self):
-        file_paths, _ = QFileDialog.getOpenFileNames(self, "选择代码文件", ".")
+        try:
+            file_paths, _ = QFileDialog.getOpenFileNames(self, "选择代码文件", os.path.dirname(self.on_edit_project_path))
+        except:
+            file_paths, _ = QFileDialog.getOpenFileNames(self, "选择代码文件", ".")
         
         if file_paths:
             added_files = []
@@ -248,6 +251,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def Save(self):
         if not self.on_edit_project_path or not self.on_edit_project_data:
             QMessageBox.warning(None, "警告信息", "没有正在编辑的工程！")
+            return
+        if not bool(re.match(r"^V?\d+(\.\d+)*$", self.on_edit_project_data.get('software_version'))):
+            QMessageBox.warning(None, "警告信息", "版本号撰写有误! 标准格式: V数字(含小数点)或数字, 如V1.0或1.0")
             return
         success_flag, msg = Project_Manager.Modify_Project(self.on_edit_project_path, self.on_edit_project_data)
         if not success_flag:
@@ -377,6 +383,7 @@ class NewPro(QDialog, Ui_NewPro):
         
         if not Project_Manager.Check_Valid_Path(project_directory):
             QMessageBox.warning(None, "警告信息", "选择的路径有误！检查路径是否存在及其读写权限！")
+            return
         
         success_flag, path_msg = Project_Manager.New_Project(project_name, project_directory, software_name, software_version)
         if success_flag:
