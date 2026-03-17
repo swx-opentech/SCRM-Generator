@@ -253,7 +253,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             QMessageBox.warning(None, "警告信息", "没有正在编辑的工程！")
             return
         if not bool(re.match(r"^V?\d+(\.\d+)*$", self.on_edit_project_data.get('software_version'))):
-            QMessageBox.warning(None, "警告信息", "版本号撰写有误! 标准格式: V数字(含小数点)或数字, 如V1.0或1.0")
+            QMessageBox.warning(None, "警告信息", "版本号撰写有误! ")
             return
         success_flag, msg = Project_Manager.Modify_Project(self.on_edit_project_path, self.on_edit_project_data)
         if not success_flag:
@@ -378,7 +378,7 @@ class NewPro(QDialog, Ui_NewPro):
             return
 
         if not bool(re.match(r"^V?\d+(\.\d+)*$", software_version)):
-            QMessageBox.warning(None, "警告信息", "版本号撰写有误! 标准格式: V数字(含小数点)或数字, 如V1.0或1.0")
+            QMessageBox.warning(None, "警告信息", "版本号撰写有误! 标准格式: V数字或数字, 如V4.5")
             return
         
         if not Project_Manager.Check_Valid_Path(project_directory):

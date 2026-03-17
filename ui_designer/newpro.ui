@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>新建工程</string>
+   <string>源代码工程整合归档系统-新建工程</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">

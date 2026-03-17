@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>783</width>
-    <height>505</height>
+    <width>786</width>
+    <height>517</height>
    </rect>
   </property>
   <property name="font">
@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>SCRM Generator - 计算机软件著作权程序鉴别材料生成器 V4.5.3</string>
+   <string>源代码工程整合归档系统</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
@@ -35,7 +35,7 @@
      </font>
     </property>
     <property name="title">
-     <string>著作权基本信息</string>
+     <string>软件信息</string>
     </property>
     <widget class="QLabel" name="label">
      <property name="geometry">
@@ -101,7 +101,7 @@
      <rect>
       <x>10</x>
       <y>110</y>
-      <width>601</width>
+      <width>761</width>
       <height>311</height>
      </rect>
     </property>
@@ -119,7 +119,7 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>481</width>
+       <width>661</width>
        <height>281</height>
       </rect>
      </property>
@@ -135,7 +135,7 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>510</x>
+       <x>680</x>
        <y>30</y>
        <width>75</width>
        <height>23</height>
@@ -151,7 +151,7 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>510</x>
+       <x>680</x>
        <y>90</y>
        <width>75</width>
        <height>23</height>
@@ -167,7 +167,7 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>510</x>
+       <x>680</x>
        <y>150</y>
        <width>75</width>
        <height>23</height>
@@ -183,7 +183,7 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>510</x>
+       <x>680</x>
        <y>210</y>
        <width>75</width>
        <height>23</height>
@@ -199,7 +199,7 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>510</x>
+       <x>680</x>
        <y>270</y>
        <width>75</width>
        <height>23</height>
@@ -279,83 +279,6 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_3">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>110</y>
-      <width>141</width>
-      <height>311</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>微软雅黑</family>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-    <property name="title">
-     <string>一键生成</string>
-    </property>
-    <widget class="QPushButton" name="GenerateBtn">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>130</y>
-       <width>121</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="palette">
-      <palette>
-       <active>
-        <colorrole role="ButtonText">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </active>
-       <inactive>
-        <colorrole role="ButtonText">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>255</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </inactive>
-       <disabled>
-        <colorrole role="ButtonText">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>120</red>
-           <green>120</green>
-           <blue>120</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </disabled>
-      </palette>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-      </font>
-     </property>
-     <property name="text">
-      <string>生成程序鉴别材料</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QPushButton" name="LoadBtn">
     <property name="geometry">
      <rect>
@@ -402,8 +325,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>430</y>
-      <width>761</width>
+      <y>440</y>
+      <width>661</width>
       <height>16</height>
      </rect>
     </property>
@@ -415,7 +338,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>460</y>
+      <y>470</y>
       <width>761</width>
       <height>16</height>
      </rect>
@@ -429,13 +352,71 @@
      <string>状态信息：</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="GenerateBtn">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>440</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>120</red>
+          <green>120</green>
+          <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>整合归档</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>783</width>
+     <width>786</width>
      <height>22</height>
     </rect>
    </property>
