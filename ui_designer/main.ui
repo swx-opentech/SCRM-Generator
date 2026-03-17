@@ -35,19 +35,19 @@
      </font>
     </property>
     <property name="title">
-     <string>软件信息</string>
+     <string>归档信息</string>
     </property>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>30</y>
-       <width>60</width>
+       <width>81</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>软件名称：</string>
+      <string>归档软件名称：</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="SoftwareName">
@@ -56,9 +56,9 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>100</x>
        <y>30</y>
-       <width>561</width>
+       <width>541</width>
        <height>20</height>
       </rect>
      </property>
@@ -71,12 +71,12 @@
       <rect>
        <x>20</x>
        <y>60</y>
-       <width>60</width>
+       <width>81</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>软件版本：</string>
+      <string>归档软件版本：</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="SoftwareVersion">
@@ -85,9 +85,9 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>100</x>
        <y>60</y>
-       <width>561</width>
+       <width>541</width>
        <height>20</height>
       </rect>
      </property>
@@ -112,7 +112,7 @@
      </font>
     </property>
     <property name="title">
-     <string>源代码文件信息</string>
+     <string>整合 归档文件信息</string>
     </property>
     <widget class="QListWidget" name="CodeFiles">
      <property name="geometry">
@@ -288,8 +288,13 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>加载工程</string>
+     <string>加载归档</string>
     </property>
    </widget>
    <widget class="QPushButton" name="NewBtn">
@@ -301,8 +306,13 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>新建工程</string>
+     <string>新建归档</string>
     </property>
    </widget>
    <widget class="QPushButton" name="ClosePro">
@@ -317,8 +327,13 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>关闭工程</string>
+     <string>关闭归档</string>
     </property>
    </widget>
    <widget class="QProgressBar" name="ProgressBar">
@@ -404,6 +419,7 @@
     <property name="font">
      <font>
       <family>微软雅黑</family>
+      <pointsize>9</pointsize>
      </font>
     </property>
     <property name="text">
@@ -431,7 +447,7 @@
    </widget>
    <widget class="QMenu" name="ProjectMenu">
     <property name="title">
-     <string>工程</string>
+     <string>归档</string>
     </property>
     <addaction name="LoadBtn_Menu"/>
     <addaction name="NewBtn_Menu"/>
@@ -492,12 +508,12 @@
   </action>
   <action name="LoadBtn_Menu">
    <property name="text">
-    <string>加载工程</string>
+    <string>加载归档</string>
    </property>
   </action>
   <action name="NewBtn_Menu">
    <property name="text">
-    <string>新建工程</string>
+    <string>新建归档</string>
    </property>
   </action>
   <action name="ClosePro_Menu">
@@ -505,7 +521,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>关闭工程</string>
+    <string>关闭归档</string>
    </property>
   </action>
  </widget>

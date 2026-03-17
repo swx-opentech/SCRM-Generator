@@ -63,11 +63,11 @@ class Ui_NewPro(object):
 
     def retranslateUi(self, NewPro):
         _translate = QtCore.QCoreApplication.translate
-        NewPro.setWindowTitle(_translate("NewPro", "源代码工程整合归档系统-新建工程"))
+        NewPro.setWindowTitle(_translate("NewPro", "源代码工程整合归档系统-新建归档"))
         self.label.setText(_translate("NewPro", "软 件 名 称："))
         self.label_2.setText(_translate("NewPro", "软件版本号："))
         self.OKNew.setText(_translate("NewPro", "新建"))
         self.Cancel.setText(_translate("NewPro", "取消"))
-        self.label_3.setText(_translate("NewPro", "工 程 位 置："))
+        self.label_3.setText(_translate("NewPro", "归 档 位 置："))
         self.ChoosePath.setText(_translate("NewPro", "..."))
-        self.label_4.setText(_translate("NewPro", "工 程 名 称："))
+        self.label_4.setText(_translate("NewPro", "归 档 名 称："))

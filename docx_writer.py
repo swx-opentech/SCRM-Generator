@@ -9,8 +9,8 @@ from docx.document import Document as DocumentObject
 from file_manager import File_Manager
 
 class DocumentWriter:
-    software_name = "[软件名称]"
-    software_version = "[软件版本]"
+    software_name = "[归档名称]"
+    software_version = "[归档版本]"
     current_codeblock = 0
     total_codeblock = 0
 

@@ -47,7 +47,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         NewProDialog.exec_()
 
     def Open_Project(self):
-        file_path, _ = QFileDialog.getOpenFileName(self, "选择工程文件", ".", "SCRM Files (*.scrm)")
+        file_path, _ = QFileDialog.getOpenFileName(self, "选择归档文件", ".", "归档工程文件 (*.scrm)")
         print(f"[MainWindow] 用户选择了文件！路径为: {file_path}")
         if file_path:
             self.Load_Project(file_path)
@@ -60,7 +60,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def Load_Project(self, project_path: str):
         success_flag, project_data = Project_Manager.Load_Project(project_path)
         if not success_flag:
-            QMessageBox.critical(None, "错误信息", f"工程加载失败！错误信息：{project_data}")
+            QMessageBox.critical(None, "错误信息", f"归档工程加载失败！错误信息：{project_data}")
             return
         self.on_edit_project_data = project_data # 把信息存储到类中
         self.on_edit_codes_list = self.on_edit_project_data.get("source_code_paths")  # 是引用赋值，两个会同时变动
@@ -113,12 +113,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def CloseProject(self):
         if self.on_edit_status: # 还没有退出编辑
-            reply = QMessageBox.question(self, "确认关闭", "工程尚未保存，确定要关闭吗？", QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)
+            reply = QMessageBox.question(self, "确认关闭", "归档尚未保存，确定要关闭吗？", QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)
             if reply == QMessageBox.Cancel or reply == QMessageBox.No:
                 self.INFO("用户取消了关闭操作")
                 return
             else:
-                self.INFO("用户强制关闭工程")
+                self.INFO("用户强制关闭归档工程")
             
         # 禁用文本框并显示基本信息
         self.SoftwareName.setText("")
@@ -152,7 +152,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ClosePro_Menu.setEnabled(False)
         self.GenerateBtn.setEnabled(False)
 
-        self.INFO("关闭工程成功！")
+        self.INFO("关闭归档工程成功！")
 
 
     def Add_CodeFile(self):
@@ -250,7 +250,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def Save(self):
         if not self.on_edit_project_path or not self.on_edit_project_data:
-            QMessageBox.warning(None, "警告信息", "没有正在编辑的工程！")
+            QMessageBox.warning(None, "警告信息", "没有正在编辑的归档工程！")
             return
         if not bool(re.match(r"^V?\d+(\.\d+)*$", self.on_edit_project_data.get('software_version'))):
             QMessageBox.warning(None, "警告信息", "版本号撰写有误! ")
@@ -265,11 +265,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def Generate_File(self):
         if self.on_edit_status: # 还没有退出编辑
-            QMessageBox.warning(self, "警告信息", "工程没有保存，请保存后再生成文件！", QMessageBox.Yes)
+            QMessageBox.warning(self, "警告信息", "归档工程没有保存，请保存后再出版！", QMessageBox.Yes)
             return
         
         if not self.on_edit_codes_list: # 啥都没有
-            QMessageBox.warning(self, "警告信息", "没有代码文件可以生成！", QMessageBox.Yes)
+            QMessageBox.warning(self, "警告信息", "没有代码文件可以出版！", QMessageBox.Yes)
             return
         
         self.ProgressBar.setValue(0)
@@ -287,14 +287,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         export_dir = os.path.dirname(self.on_edit_project_path)
-        export_filename = f"{export_dir}/{DocumentWriter.software_name}{DocumentWriter.software_version} - 源代码.docx"
+        export_filename = f"{export_dir}/{DocumentWriter.software_name}{DocumentWriter.software_version} - 出版物.docx"
 
         doc = DocumentWriter.Create()
         for cnt, file_path in enumerate(self.on_edit_codes_list):
             success_flag, msg = DocumentWriter.Generate_One(doc, file_path)
             if not success_flag:
-                QMessageBox.warning(self, "警告信息", f"文件{file_path}生成错误：{msg}，文件生成失败！", QMessageBox.Yes)
-                self.INFO("生成时发生了错误，生成失败！")
+                QMessageBox.warning(self, "警告信息", f"文件{file_path}出版错误：{msg}，文件出版失败！", QMessageBox.Yes)
+                self.INFO("出版时发生了错误，出版失败！")
                 self.ProgressBar.setValue(0)
                 return
             self.INFO(msg)
@@ -303,7 +303,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.INFO(f"文件保存成功，路径：{export_filename}")
         
         # 处理提示框
-        msg_box = QMessageBox(QMessageBox.Information, "提示信息", f"导出成功，导出目录为：\n{export_dir}", parent=self)
+        msg_box = QMessageBox(QMessageBox.Information, "提示信息", f"出版成功，出版目录为：\n{export_dir}", parent=self)
         btn_view_dir = msg_box.addButton("打开目录", QMessageBox.ActionRole)
         btn_view_file = msg_box.addButton("打开文件", QMessageBox.ActionRole)
         btn_ok = msg_box.addButton("确定", QMessageBox.AcceptRole)
@@ -317,8 +317,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         DocumentWriter.current_codeblock = 0
         DocumentWriter.total_codeblock = 0
-        DocumentWriter.software_name = "[软件名称]"
-        DocumentWriter.software_version = "[软件版本]"
+        DocumentWriter.software_name = "[归档名称]"
+        DocumentWriter.software_version = "[归档版本]"
         
         
 
@@ -374,11 +374,11 @@ class NewPro(QDialog, Ui_NewPro):
         project_directory = self.ProjectPath.text()
 
         if not project_name.strip() or not software_name.strip() or not software_version.strip() or not project_directory.strip():
-            QMessageBox.warning(None, "警告信息", "工程名称、软件名称、版本号不能为空！")
+            QMessageBox.warning(None, "警告信息", "归档名称、软件名称、版本号不能为空！")
             return
 
         if not bool(re.match(r"^V?\d+(\.\d+)*$", software_version)):
-            QMessageBox.warning(None, "警告信息", "版本号撰写有误! 标准格式: V数字或数字, 如V4.5")
+            QMessageBox.warning(None, "警告信息", "版本号撰写有误! 标准格式如V4.5")
             return
         
         if not Project_Manager.Check_Valid_Path(project_directory):
@@ -387,11 +387,11 @@ class NewPro(QDialog, Ui_NewPro):
         
         success_flag, path_msg = Project_Manager.New_Project(project_name, project_directory, software_name, software_version)
         if success_flag:
-            QMessageBox.information(None, "提示信息", "工程创建成功！即将打开工程！")
-            print(f"[NewPro] 工程创建成功, path = {path_msg}")
+            QMessageBox.information(None, "提示信息", "归档创建成功！即将打开归档！")
+            print(f"[NewPro] 归档创建成功, path = {path_msg}")
         else:
-            QMessageBox.critical(None, "错误信息", f"工程创建失败！错误信息：{path_msg}")
-            print(f"[NewPro] 工程创建失败, msg = {path_msg}")
+            QMessageBox.critical(None, "错误信息", f"归档创建失败！错误信息：{path_msg}")
+            print(f"[NewPro] 归档创建失败, msg = {path_msg}")
             return
         self.project_created.emit(path_msg)
         self.close()

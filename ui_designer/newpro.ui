@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>源代码工程整合归档系统-新建工程</string>
+   <string>源代码工程整合归档系统-新建归档</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -100,7 +100,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>工 程 位 置：</string>
+    <string>归 档 位 置：</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="ProjectPath">
@@ -136,7 +136,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>工 程 名 称：</string>
+    <string>归 档 名 称：</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="ProjectName">
